@@ -62,5 +62,12 @@
 
 		public function romanToArabic(RomanNumeral $romanNumeral) {
 
+			// Make sure that the RomanNumeral has been set
+			$tempRoman = null;
+			try {
+				$tempRoman = $romanNumeral->getValue();
+			} catch (Exception $e) {
+				throw $e;
+			}
 		}
 	}

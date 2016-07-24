@@ -84,6 +84,20 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		public function testWhenInterpreterInterpretsRomanToArabicOnUnsetRomanNumeralExceptionThrown() {
+			$romanNumeral = new RomanNumeral();
+			$numeralInterpreter = new NumeralInterpreter();
+			$exceptionMessage = 'No exception thrown.';
+			$isException = false;
+			try {
+				$numeralInterpreter->romanToArabic($romanNumeral);
+			} catch (Exception $e) {
+				$isException = true;
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(true, $isException, $exceptionMessage);
+		}
+
 		
 		
 	}
