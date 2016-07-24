@@ -16,4 +16,22 @@
 			$this->assertEquals(true, $arabicNumeral->setValue(4));
 			$this->assertEquals(true, $arabicNumeral->setValue(5));
 		}
+
+		public function testWhenArabicNumeralIsPassedNonIntegerItThrowsException() {
+
+			$nonIntegers = ['A', 'a', '', 1.2, null];
+
+			foreach ($nonIntegers as $nonInteger) {
+				$arabicNumeral = new ArabicNumeral();
+				$isException = false;
+				$exceptionMessage = '';
+				try {
+					$arabicNumeral->setValue($nonInteger);
+				} catch (Exception $e) {
+					$isException = true;
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals(true, $isException, $exceptionMessage);
+			}
+		}
 	}
