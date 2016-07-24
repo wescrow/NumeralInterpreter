@@ -8,7 +8,13 @@
 	 */
 	class NumeralInterpreter {
 
-		public function arabicToRoman(ArabicNumeral $arabic) {
+		public function arabicToRoman(ArabicNumeral $arabicNumeral) {
 
+			$arabicNumeralValue = null;
+			try {
+				$arabicNumeralValue = $arabicNumeral->getValue();
+			} catch (Exception $e) {
+				throw $e;
+			}
 		}
 	}

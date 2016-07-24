@@ -22,4 +22,18 @@
 			}
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
+
+		public function testWhenInterpreterInterpretsArabicToRomanOnUnsetArabicNumeralExceptionThrown() {
+			$arabicNumeral = new ArabicNumeral();
+			$numeralInterpreter = new NumeralInterpreter();
+			$exceptionMessage = 'No exception thrown.';
+			$isException = false;
+			try {
+				$numeralInterpreter->arabicToRoman($arabicNumeral);
+			} catch (Exception $e) {
+				$isException = true;
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(true, $isException, $exceptionMessage);
+		}
 	}
