@@ -59,4 +59,8 @@
 				throw $e;
 			}
 		}
+
+		public function romanToArabic(RomanNumeral $romanNumeral) {
+
+		}
 	}

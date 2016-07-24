@@ -68,6 +68,22 @@
 				}
 			}
 		}
+
+		public function testWhenInterpreterInterpretsRomanToArabicInvalidRomanTypeExceptionThrown() {
+			$arabicNumeral = new ArabicNumeral();
+			$numeralInterpreter = new NumeralInterpreter();
+			$exceptionMessage = 'No exception thrown.';
+			$isException = false;
+			try {
+				$arabicNumeral->setValue(1);
+				$numeralInterpreter->romanToArabic($arabicNumeral);
+			} catch (Exception $e) {
+				$isException = true;
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(true, $isException, $exceptionMessage);
+		}
+
 		
 		
 	}
