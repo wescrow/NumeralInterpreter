@@ -59,4 +59,25 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		public function testWhenRomanNumeralGetValueIsCalledAfterSetValueValueIsReturned() {
+
+			$validRomanNumerals = [
+				'I', 'III', 'IX', 'MLXVI', 'MCMLXXXIX', 'CXXIII', 'MCMXCIX', 'CCV', 'CMLXXXVII',
+				'MCCIX', 'MMCMIV', 'DCCLXXVII', 'CXII'
+			];
+
+			foreach ($validRomanNumerals as $validRomanNumeral) {
+				$romanNumeral = new RomanNumeral();
+				$value = null;
+				$exceptionMessage = "No exception thrown.";
+				try {
+					$romanNumeral->setValue($validRomanNumeral);
+					$value = $romanNumeral->getValue();
+				} catch (Exception $e) {
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals($validRomanNumeral, $value, $exceptionMessage);
+			}
+		}
+
 	}
