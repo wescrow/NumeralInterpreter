@@ -28,12 +28,11 @@
 
 		public function testWhenInterpreterInterpretsArabicToRomanInvalidArabicTypeExceptionThrown() {
 			$romanNumeral = new RomanNumeral();
-			$numeralInterpreter = new NumeralInterpreter();
 			$exceptionMessage = 'No exception thrown.';
 			$isException = false;
 			try {
 				$romanNumeral->setValue('I');
-				$numeralInterpreter->arabicToRoman($romanNumeral);
+				NumeralInterpreter::arabicToRoman($romanNumeral);
 			} catch (Exception $e) {
 				$isException = true;
 				$exceptionMessage = $e->getMessage();
@@ -43,11 +42,10 @@
 
 		public function testWhenInterpreterInterpretsArabicToRomanOnUnsetArabicNumeralExceptionThrown() {
 			$arabicNumeral = new ArabicNumeral();
-			$numeralInterpreter = new NumeralInterpreter();
 			$exceptionMessage = 'No exception thrown.';
 			$isException = false;
 			try {
-				$numeralInterpreter->arabicToRoman($arabicNumeral);
+				NumeralInterpreter::arabicToRoman($arabicNumeral);
 			} catch (Exception $e) {
 				$isException = true;
 				$exceptionMessage = $e->getMessage();
@@ -71,12 +69,11 @@
 
 		public function testWhenInterpreterInterpretsRomanToArabicInvalidRomanTypeExceptionThrown() {
 			$arabicNumeral = new ArabicNumeral();
-			$numeralInterpreter = new NumeralInterpreter();
 			$exceptionMessage = 'No exception thrown.';
 			$isException = false;
 			try {
 				$arabicNumeral->setValue(1);
-				$numeralInterpreter->romanToArabic($arabicNumeral);
+				NumeralInterpreter::romanToArabic($arabicNumeral);
 			} catch (Exception $e) {
 				$isException = true;
 				$exceptionMessage = $e->getMessage();
@@ -86,11 +83,10 @@
 
 		public function testWhenInterpreterInterpretsRomanToArabicOnUnsetRomanNumeralExceptionThrown() {
 			$romanNumeral = new RomanNumeral();
-			$numeralInterpreter = new NumeralInterpreter();
 			$exceptionMessage = 'No exception thrown.';
 			$isException = false;
 			try {
-				$numeralInterpreter->romanToArabic($romanNumeral);
+				NumeralInterpreter::romanToArabic($romanNumeral);
 			} catch (Exception $e) {
 				$isException = true;
 				$exceptionMessage = $e->getMessage();
@@ -99,12 +95,11 @@
 		}
 
 		public function testWhenInterpreterInterpretsValidRomanToArabicValidArabicIsReturned() {
-			$numeralInterpreter = new NumeralInterpreter();
 			foreach ($this->arabicToRoman as $arabicNumeralValue => $romanNumeralValue) {
 				try {
 					$romanNumeral = new RomanNumeral();
 					$romanNumeral->setValue($romanNumeralValue);
-					$arabicNumeral = $numeralInterpreter->romanToArabic($romanNumeral);
+					$arabicNumeral = NumeralInterpreter::romanToArabic($romanNumeral);
 					$this->assertEquals($arabicNumeralValue, $arabicNumeral->getValue(), 'The arabic numeral value "' . $arabicNumeral->getValue() . '" did not equal the expected "' . $arabicNumeralValue . '".');
 				} catch (Exception $e) {
 					$this->fail($e->getMessage());
