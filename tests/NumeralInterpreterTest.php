@@ -26,6 +26,11 @@
 			543 => 'DXLIII'
 		];
 
+		/**
+		 * testWhenInterpreterInterpretsArabicToRomanInvalidArabicTypeExceptionThrown
+		 * When the NumeralInterpreter's function arabicToRoman is given an object of an invalid type an
+		 * exception is thrown.
+		 */
 		public function testWhenInterpreterInterpretsArabicToRomanInvalidArabicTypeExceptionThrown() {
 			$romanNumeral = new RomanNumeral();
 			$exceptionMessage = 'No exception thrown.';
@@ -40,6 +45,11 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenInterpreterInterpretsArabicToRomanOnUnsetArabicNumeralExceptionThrown
+		 * When the NumeralInterpreter's arabicToRoman function is given an unset ArabicNumeral object an exception
+		 * is thrown.
+		 */
 		public function testWhenInterpreterInterpretsArabicToRomanOnUnsetArabicNumeralExceptionThrown() {
 			$arabicNumeral = new ArabicNumeral();
 			$exceptionMessage = 'No exception thrown.';
@@ -53,6 +63,11 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenInterpreterInterpretsValidArabicToRomanValidRomanIsReturned
+		 * When the NumeralInterpreter's arabicToRoman function is given a valid RomanNumeral the
+		 * corresponding ArabicNumeral is returned.
+		 */
 		public function testWhenInterpreterInterpretsValidArabicToRomanValidRomanIsReturned() {
 
 			foreach ($this->arabicToRoman as $arabicNumeralValue => $romanNumeralValue) {
@@ -67,6 +82,11 @@
 			}
 		}
 
+		/**
+		 * testWhenInterpreterInterpretsRomanToArabicInvalidRomanTypeExceptionThrown
+		 * When the NumeralInterpreter's romanToArabic function is given an object not of type RomanNumeral an
+		 * exception is thrown.
+		 */
 		public function testWhenInterpreterInterpretsRomanToArabicInvalidRomanTypeExceptionThrown() {
 			$arabicNumeral = new ArabicNumeral();
 			$exceptionMessage = 'No exception thrown.';
@@ -81,6 +101,11 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenInterpreterInterpretsRomanToArabicOnUnsetRomanNumeralExceptionThrown
+		 * When the NumeralInterpreter's romanToArabic function is given an unset RomanNumeral object an
+		 * exception is thrown.
+		 */
 		public function testWhenInterpreterInterpretsRomanToArabicOnUnsetRomanNumeralExceptionThrown() {
 			$romanNumeral = new RomanNumeral();
 			$exceptionMessage = 'No exception thrown.';
@@ -94,6 +119,11 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenInterpreterInterpretsValidRomanToArabicValidArabicIsReturned
+		 * When the NumeralInterpreter is given a valid RomanNumeral object the corresponding ArabicNumeral
+		 * object is returned.
+		 */
 		public function testWhenInterpreterInterpretsValidRomanToArabicValidArabicIsReturned() {
 			foreach ($this->arabicToRoman as $arabicNumeralValue => $romanNumeralValue) {
 				try {
@@ -106,8 +136,4 @@
 				}
 			}
 		}
-		
-		
 	}
-	
-	
