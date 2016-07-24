@@ -8,20 +8,32 @@
 	 */
 	class ArabicNumeralTest extends \PHPUnit_Framework_TestCase {
 
+
+		/**
+		 * Test When ArabicNumeral Is Passed An Integer It Returns True
+		 */
 		public function testWhenArabicNumeralIsPassedAnIntegerItReturnsTrue() {
-			$arabicNumeral = new ArabicNumeral();
-			$this->assertEquals(true, $arabicNumeral->setValue(1));
-			$this->assertEquals(true, $arabicNumeral->setValue(2));
-			$this->assertEquals(true, $arabicNumeral->setValue(3));
-			$this->assertEquals(true, $arabicNumeral->setValue(4));
-			$this->assertEquals(true, $arabicNumeral->setValue(5));
+
+			foreach (range(1, 5) as $integer) {
+				$arabicNumeral = new ArabicNumeral();
+				$exceptionMessage = "No exception was thrown.";
+				$value = null;
+				try {
+					$value = $arabicNumeral->setValue($integer);
+				} catch (Exception $e) {
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals(true, $value, $exceptionMessage);
+			}
 		}
 
+		/**
+		 * testWhenArabicNumeralIsPassedNonIntegerItThrowsException
+		 * This tests that when an ArabicNumeral object is set with a non-integer that it throws an exception.
+		 */
 		public function testWhenArabicNumeralIsPassedNonIntegerItThrowsException() {
 
-			$nonIntegers = ['A', 'a', '', 1.2, null];
-
-			foreach ($nonIntegers as $nonInteger) {
+			foreach (['A', 'a', '', 1.2, null] as $nonInteger) {
 				$arabicNumeral = new ArabicNumeral();
 				$isException = false;
 				$exceptionMessage = "No exception thrown for non integer '$nonInteger'.";
@@ -35,7 +47,13 @@
 			}
 		}
 
+		/**
+		 * testWhenArabicNumeralGetValueIsCalledOnObjectThatHasNoSetValueExceptionIsThrown
+		 * This tests when that when the getValue() function of an Arabic Numeral is called before the setValue()
+		 * function an exception is thrown.
+		 */
 		public function testWhenArabicNumeralGetValueIsCalledOnObjectThatHasNoSetValueExceptionIsThrown() {
+
 			$arabicNumeral = new ArabicNumeral();
 			$isException = false;
 			$exceptionMessage = 'No exception thrown.';
@@ -48,16 +66,24 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenArabicNumeralGetValueIsCalledAfterSuccessfulSetValueThatTheValueIsReturned
+		 * This tests that when the getValue() function of an ArabicNumeral is called after the successful setValue()
+		 * function is called, the value that was set gets returned.
+		 */
 		public function testWhenArabicNumeralGetValueIsCalledAfterSuccessfulSetValueThatTheValueIsReturned() {
-			$arabicNumeral = new ArabicNumeral();
-			$exceptionMessage = 'No exception thrown.';
-			$value = null;
-			try {
-				$arabicNumeral->setValue(1);
-				$value = $arabicNumeral->getValue();
-			} catch (Exception $e) {
-				$exceptionMessage = $e->getMessage();
+
+			foreach (range(1, 5) as $integer) {
+				$arabicNumeral = new ArabicNumeral();
+				$exceptionMessage = 'No exception thrown.';
+				$value = null;
+				try {
+					$arabicNumeral->setValue($integer);
+					$value = $arabicNumeral->getValue();
+				} catch (Exception $e) {
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals($integer, $value, $exceptionMessage);
 			}
-			$this->assertEquals(1, $value, $exceptionMessage);
 		}
 	}
