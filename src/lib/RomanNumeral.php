@@ -1,15 +1,11 @@
 <?php
 
+	require_once('AbstractNumeral.php');
+
 	/**
 	 * Class RomanNumeral
 	 */
-	class RomanNumeral {
-
-		/**
-		 * The value of the object.
-		 * @var $value null
-		 */
-		private $value = null;
+	class RomanNumeral extends AbstractNumeral {
 
 		/**
 		 * setValue
@@ -27,21 +23,6 @@
 				return true;
 			} else {
 				throw new Exception("Input '$input' is not a valid value for an Roman Numeral.");
-			}
-		}
-
-		/**
-		 * getValue
-		 * Returns the value of the object if set.
-		 * @return string The value of the object.
-		 * @throws Exception Thrown if no value is set.
-		 */
-		public function getValue() {
-
-			if (is_null($this->value)) {
-				throw new Exception('The value for this Roman Numeral has not been set.');
-			} else {
-				return $this->value;
 			}
 		}
 	}
