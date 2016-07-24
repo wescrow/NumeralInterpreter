@@ -16,7 +16,7 @@
 
 			$validRomanNumerals = [
 				'I', 'III', 'IX', 'MLXVI', 'MCMLXXXIX', 'CXXIII', 'MCMXCIX', 'CCV', 'CMLXXXVII',
-				'MCCIX', 'MMCMIV', 'DCCLXXVII', 'CXII'
+				'MCCIX', 'MMCMIV', 'DCCLXXVII', 'CXII', 'i', 'ix', 'mcmlxxxix'
 			];
 
 			foreach ($validRomanNumerals as $validRomanNumeral) {
@@ -86,7 +86,7 @@
 
 			$validRomanNumerals = [
 				'I', 'III', 'IX', 'MLXVI', 'MCMLXXXIX', 'CXXIII', 'MCMXCIX', 'CCV', 'CMLXXXVII',
-				'MCCIX', 'MMCMIV', 'DCCLXXVII', 'CXII'
+				'MCCIX', 'MMCMIV', 'DCCLXXVII', 'CXII', 'i', 'ix', 'mcmlxxxix'
 			];
 
 			foreach ($validRomanNumerals as $validRomanNumeral) {
@@ -99,7 +99,7 @@
 				} catch (Exception $e) {
 					$exceptionMessage = $e->getMessage();
 				}
-				$this->assertEquals($validRomanNumeral, $value, $exceptionMessage);
+				$this->assertEquals(strtoupper($validRomanNumeral), $value, $exceptionMessage);
 			}
 		}
 
