@@ -28,7 +28,7 @@
 			'I'  => 1
 		];
 
-		public function arabicToRoman(ArabicNumeral $arabicNumeral) {
+		public static function arabicToRoman(ArabicNumeral $arabicNumeral) {
 
 			// Make sure that the ArabicNumeral has been set
 			$tempArabic = null;
@@ -60,12 +60,39 @@
 			}
 		}
 
-		public function romanToArabic(RomanNumeral $romanNumeral) {
+		public static function romanToArabic(RomanNumeral $romanNumeral) {
 
 			// Make sure that the RomanNumeral has been set
 			$tempRoman = null;
 			try {
 				$tempRoman = $romanNumeral->getValue();
+			} catch (Exception $e) {
+				throw $e;
+			}
+
+			// Calculate the Arabic value
+			$arabicValue = 0;
+			$tempRoman = $romanNumeral->getValue();
+
+			// Iterate over the roman to arabic array
+			foreach (static::$romanNumerals as $rn => $an) {
+
+				// If the Roman Numeral matches the top of the string
+				while (strpos($tempRoman, $rn) === 0) {
+
+					// Add the value
+					$arabicValue += $an;
+
+					// Remove the Roman Numeral pattern from the temp string
+					$tempRoman = substr($tempRoman, strlen($rn));
+				}
+			}
+
+			// Build the ArabicNumeral object from our results
+			try {
+				$arabic = new ArabicNumeral();
+				$arabic->setValue($arabicValue);
+				return $arabic;
 			} catch (Exception $e) {
 				throw $e;
 			}

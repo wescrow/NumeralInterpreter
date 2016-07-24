@@ -98,6 +98,19 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		public function testWhenInterpreterInterpretsValidRomanToArabicValidArabicIsReturned() {
+			$numeralInterpreter = new NumeralInterpreter();
+			foreach ($this->arabicToRoman as $arabicNumeralValue => $romanNumeralValue) {
+				try {
+					$romanNumeral = new RomanNumeral();
+					$romanNumeral->setValue($romanNumeralValue);
+					$arabicNumeral = $numeralInterpreter->romanToArabic($romanNumeral);
+					$this->assertEquals($arabicNumeralValue, $arabicNumeral->getValue(), 'The arabic numeral value "' . $arabicNumeral->getValue() . '" did not equal the expected "' . $arabicNumeralValue . '".');
+				} catch (Exception $e) {
+					$this->fail($e->getMessage());
+				}
+			}
+		}
 		
 		
 	}
