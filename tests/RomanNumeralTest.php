@@ -8,7 +8,10 @@
 	 */
 	class RomanNumeralTest extends \PHPUnit_Framework_TestCase {
 
-
+		/**
+		 * testWhenRomanNumeralIsPassedAValidRomanNumeralItReturnsTrue
+		 * When the RomanNumeral object is passed a valid roman numeral into setValue it returns true.
+		 */
 		public function testWhenRomanNumeralIsPassedAValidRomanNumeralItReturnsTrue() {
 
 			$validRomanNumerals = [
@@ -18,10 +21,22 @@
 
 			foreach ($validRomanNumerals as $validRomanNumeral) {
 				$romanNumeral = new RomanNumeral();
-				$this->assertEquals(true, $romanNumeral->setValue($validRomanNumeral));
+				$isException = false;
+				$exceptionMessage = "No exception thrown.";
+				try {
+					$romanNumeral->setValue($validRomanNumeral);
+				} catch (Exception $e) {
+					$isException = true;
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals(false, $isException, $exceptionMessage);
 			}
 		}
 
+		/**
+		 * testWhenRomanNumeralPassedInvalidRomanNumeralValueExceptionIsThrown
+		 * When the RomanNumeral object is passed an invalid roman numeral into setValue an exception is thrown.
+		 */
 		public function testWhenRomanNumeralPassedInvalidRomanNumeralValueExceptionIsThrown() {
 
 			$invalidRomanNumerals = [
@@ -44,7 +59,11 @@
 				$this->assertEquals(true, $isException, $exceptionMessage);
 			}
 		}
-		
+
+		/**
+		 * testWhenRomanNumeralGetValueIsCalledBeforeSetValueExceptionIsThrown
+		 * When a RomanNumeral object's getValue is called before it's setValue an exception is thrown.
+		 */
 		public function testWhenRomanNumeralGetValueIsCalledBeforeSetValueExceptionIsThrown() {
 
 			$romanNumeral = new RomanNumeral();
@@ -59,6 +78,10 @@
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 
+		/**
+		 * testWhenRomanNumeralGetValueIsCalledAfterSetValueValueIsReturned
+		 * When a RomanNumeral object's getValue is called after it's setValue the value is returned.
+		 */
 		public function testWhenRomanNumeralGetValueIsCalledAfterSetValueValueIsReturned() {
 
 			$validRomanNumerals = [
