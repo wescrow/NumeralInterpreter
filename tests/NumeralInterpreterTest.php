@@ -33,7 +33,7 @@
 			$isException = false;
 			try {
 				$romanNumeral->setValue('I');
-				$numeralInterpreter->arabicToRoman($roman);
+				$numeralInterpreter->arabicToRoman($romanNumeral);
 			} catch (Exception $e) {
 				$isException = true;
 				$exceptionMessage = $e->getMessage();
@@ -68,6 +68,8 @@
 				}
 			}
 		}
+		
+		
 	}
 	
 	
