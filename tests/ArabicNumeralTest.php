@@ -47,4 +47,17 @@
 			}
 			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
+
+		public function testWhenArabicNumeralGetValueIsCalledAfterSuccessfulSetValueThatTheValueIsReturned() {
+			$arabicNumeral = new ArabicNumeral();
+			$exceptionMessage = 'No exception thrown.';
+			$value = null;
+			try {
+				$arabicNumeral->setValue(1);
+				$value = $arabicNumeral->getValue();
+			} catch (Exception $e) {
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(1, $value, $exceptionMessage);
+		}
 	}
