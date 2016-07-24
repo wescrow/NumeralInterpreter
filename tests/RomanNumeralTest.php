@@ -44,5 +44,19 @@
 				$this->assertEquals(true, $isException, $exceptionMessage);
 			}
 		}
+		
+		public function testWhenRomanNumeralGetValueIsCalledBeforeSetValueExceptionIsThrown() {
+
+			$romanNumeral = new RomanNumeral();
+			$isException = false;
+			$exceptionMessage = "No exception thrown.";
+			try {
+				$romanNumeral->getValue();
+			} catch (Exception $e) {
+				$isException = true;
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(true, $isException, $exceptionMessage);
+		}
 
 	}

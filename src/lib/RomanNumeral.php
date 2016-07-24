@@ -5,6 +5,7 @@
 	 */
 	class RomanNumeral {
 
+		private $value = null;
 
 		public function setValue($input) {
 
@@ -12,6 +13,13 @@
 				return true;
 			} else {
 				throw new Exception("Input '$input' is not a valid value for an Roman Numeral.");
+			}
+		}
+
+		public function getValue() {
+
+			if (is_null($this->value)) {
+				throw new Exception('The value for this Arabic Numeral has not been set.');
 			}
 		}
 	}
