@@ -24,7 +24,7 @@
 			foreach ($nonIntegers as $nonInteger) {
 				$arabicNumeral = new ArabicNumeral();
 				$isException = false;
-				$exceptionMessage = '';
+				$exceptionMessage = "No exception thrown for non integer '$nonInteger'.";
 				try {
 					$arabicNumeral->setValue($nonInteger);
 				} catch (Exception $e) {
@@ -33,5 +33,18 @@
 				}
 				$this->assertEquals(true, $isException, $exceptionMessage);
 			}
+		}
+
+		public function testWhenArabicNumeralGetValueIsCalledOnObjectThatHasNoSetValueExceptionIsThrown() {
+			$arabicNumeral = new ArabicNumeral();
+			$isException = false;
+			$exceptionMessage = 'No exception thrown.';
+			try {
+				$arabicNumeral->getValue();
+			} catch (Exception $e) {
+				$isException = true;
+				$exceptionMessage = $e->getMessage();
+			}
+			$this->assertEquals(true, $isException, $exceptionMessage);
 		}
 	}
