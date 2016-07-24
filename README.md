@@ -18,3 +18,6 @@ enforcing that child objects implement necessary functions.
 
 ### NumeralInterpreter
 This class interprets ArabicNumeral objects into RomanNumeral objects and vice versa.
+
+## To Implement
+This project relies on Composer and PHPunit. Once you clone this repo you should run `composer update` to download the dependencies. To run PHPUnit unit tests navigate to the root of the project and call `./vendor/bin/phpunit`.
