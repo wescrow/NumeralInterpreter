@@ -21,4 +21,28 @@
 				$this->assertEquals(true, $romanNumeral->setValue($validRomanNumeral));
 			}
 		}
+
+		public function testWhenRomanNumeralPassedInvalidRomanNumeralValueExceptionIsThrown() {
+
+			$invalidRomanNumerals = [
+				'.', '~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+',
+			 	'{', '[', '}', ']', '\\', '|', ';', ':', '"', '\'', '<', ',', '>', '?', '/', '0',
+			 	'1', '2', '3', '4', '5', '6', '7', '8', '9', 'IIII', 'XXXX', 'CCCC', 'MMMM', 'VV',
+			 	'LL', 'DD', 'IIV', 'IIX', 'IL', 'XXL', 'XXC', 'XD', 'CCD', 'CCM', ' ', 'X I'
+			];
+
+			foreach ($invalidRomanNumerals as $invalidRomanNumeral) {
+				$romanNumeral = new RomanNumeral();
+				$isException = false;
+				$exceptionMessage = "No exception thrown for invalid Roman Numeral '$invalidRomanNumeral'.";
+				try {
+					$romanNumeral->setValue($invalidRomanNumeral);
+				} catch (Exception $e) {
+					$isException = true;
+					$exceptionMessage = $e->getMessage();
+				}
+				$this->assertEquals(true, $isException, $exceptionMessage);
+			}
+		}
+
 	}
